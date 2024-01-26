@@ -1,21 +1,30 @@
+import os
 import subprocess
 
 
-def convert_tex_to_pdf(tex_file_path):
-    try:
-        # Создаем команду для pdflatex
-        command = ['pdflatex', tex_file_path]
+def latex_to_pdf(latex_code, output_path='output.pdf'):
+    # Создаем временный файл .tex
+    with open('temp.tex', 'w') as f:
+        f.write(latex_code)
 
-        # Запускаем процесс и ждем его завершения
-        subprocess.run(command, check=True)
+    # Вызываем pdflatex для компиляции .tex в .pdf
+    subprocess.run(['pdflatex', '-output-directory', '.', 'temp.tex'])
 
-        # Если нужно, можно добавить другие шаги (например, более чем один проход pdflatex)
-        # subprocess.run(command, check=True)
-        # subprocess.run(command, check=True)
-    except subprocess.CalledProcessError as e:
-        print(f"An error occurred: {e}")
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+    # Перемещаем результат в указанный выходной файл
+    os.rename('temp.pdf', output_path)
 
+    # Удаляем временные файлы
+    os.remove('temp.tex')
+    os.remove('temp.aux')
+    os.remove('temp.log')
 
+# Пример использования
+latex_code = """
+\\documentclass{article}
+\\begin{document}
+Hello, this is a simple LaTeX to PDF conversion!
+\\end{document}
+"""
 
+latex_to_pdf(latex_code)
+print("Conversion complete. Check output.pdf.")

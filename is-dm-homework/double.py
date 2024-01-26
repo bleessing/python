@@ -19,7 +19,7 @@ def main():
 
     os.makedirs(os.path.dirname("latex/main.tex"), exist_ok=True)
 
-    out = io.open("latex/main.tex", "w", encoding='utf-8')
+    out = io.open("Output/latex/main.tex", "w", encoding='utf-8')
     print("Making main.tex file...")
 
     out.write(head)
@@ -31,7 +31,7 @@ def main():
     out.write(tail)
     out.close()
 
-    out = io.open("latex/dump.tex", "w", encoding='utf-8')
+    out = io.open("Output/latex/dump.tex", "w", encoding='utf-8')
     print("Making dump.tex file...")
 
     out.write(head)
