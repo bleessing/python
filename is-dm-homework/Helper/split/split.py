@@ -7,13 +7,13 @@ from Helper.tasks.tasks import read_file
 
 
 def split(head, q_start, q_start2, q_finish, tail, variants, students, tasks):
-    head = read_file('templates/head.tex')
-    q_start = read_file('templates/qStart.tex')
-    q_start2 = read_file('templates/qStart2.tex')
-    q_finish = read_file('templates/qFinish.tex')
-    tail = read_file('templates/tail.tex')
-    os.makedirs(os.path.dirname("latex/main.tex"), exist_ok=True)
-    out = io.open("latex/main.tex", "w", encoding='utf-8')
+    head = read_file('Data/templates/head.tex')
+    q_start = read_file('Data/templates/qStart.tex')
+    q_start2 = read_file('Data/templates/qStart2.tex')
+    q_finish = read_file('Data/templates/qFinish.tex')
+    tail = read_file('Data/templates/tail.tex')
+    os.makedirs(os.path.dirname("Output/latex/main.tex"), exist_ok=True)
+    out = io.open("Output/latex/main.tex", "w", encoding='utf-8')
     logging.info("Making main.tex file...")
 
     out.write(head)
@@ -25,7 +25,7 @@ def split(head, q_start, q_start2, q_finish, tail, variants, students, tasks):
     out.write(tail)
     out.close()
 
-    out = io.open("latex/dump.tex", "w", encoding='utf-8')
+    out = io.open("Output/latex/dump.tex", "w", encoding='utf-8')
     logging.info("Making dump.tex file...")
 
     out.write(head)

@@ -9,11 +9,11 @@ from Helper.variants.variant import generate_variants
 def start():
     random.seed(1183)
     logging.info("Reading templates...")
-    head = read_file('templates/head.tex')
-    q_start = read_file('templates/qStart.tex')
-    q_start2 = read_file('templates/qStart2.tex')
-    q_finish = read_file('templates/qFinish.tex')
-    tail = read_file('templates/tail.tex')
+    head = read_file('Data/templates/head.tex')
+    q_start = read_file('Data/templates/qStart.tex')
+    q_start2 = read_file('Data/templates/qStart2.tex')
+    q_finish = read_file('Data/templates/qFinish.tex')
+    tail = read_file('Data/templates/tail.tex')
 
     logging.info("Reading tasks...")
     tasks = read_tasks()
